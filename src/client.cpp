@@ -40,3 +40,35 @@ int main(int numberOfArguments, char ** args) {
 // send ravi Hello 
 // To ravi: Hello 
 // From ravi: Hej to you as well
+
+class ClientUI
+{
+    public:
+    //display output 
+    virtual void print(std::string_view message) const = 0;
+};
+
+class ClientUIStdOutput : public ClientUI
+{
+public:
+    void print(std::string_view message) const override
+    {
+        std::cout << message << '\n';        
+    }
+};
+
+class ClientBackEnd
+{
+public:
+    //connect to server
+    virtual void start(std::string_view name) = 0;
+
+    virtual void send(std::string_view message, std::string_view to) const = 0;
+};
+
+class ClientBackEndImpl : public ClientBackEnd
+{
+
+    private:
+    std::reference_wrapper<ClientUI> m_ui;
+};
