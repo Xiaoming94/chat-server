@@ -20,4 +20,8 @@ CMakeUserPresets.json
 # External projects
 *-prefix/
 
+# Output binaries
+client*
+server*
+
 # End of https://www.toptal.com/developers/gitignore/api/cmake
