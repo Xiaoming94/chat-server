@@ -7,7 +7,7 @@ make
 ```
 This will generate two executables, `server` and `client`, which you can run by `./server` and `./client` respectively. 
 
-💬 Server (server.cpp)
+## 💬 Server (server.cpp)
 
 - [ ] Create and bind a TCP socket (socket(), bind(), listen())
 
@@ -21,7 +21,7 @@ This will generate two executables, `server` and `client`, which you can run by 
 
 - [ ] Handle client disconnects (remove closed sockets)
 
-👤 Client (client.cpp)
+## 👤 Client (client.cpp)
 
 - [ ] Connect to server using socket() + connect()
 
