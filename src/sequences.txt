@@ -1,0 +1,33 @@
+@startuml
+
+participant actor
+participant client
+participant server
+
+== Start up ==
+create server
+actor -> server : start
+create client
+actor -> client : start(name)
+client -> server : connect(name)
+alt there is already a client with name
+  server --> client : reject
+  destroy client
+else
+  server -> server : register client with name
+  server --> client : connectCfm
+  alt there are pending messages to the client
+    loop each message
+      server ->> client : send(message, sender)
+    end
+  end
+end
+== The user sends a message ==
+actor -> client : sendMessage(message, address)
+client ->> server : send(message, address)
+alt the address is connected
+  server -> client : send(message, sender)
+else
+  server -> server : store(message, address)
+end
+@enduml
